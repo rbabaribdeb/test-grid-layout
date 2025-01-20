@@ -1,5 +1,16 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QLineEdit
 
+
+
+
+def btn_charger_action():
+    print("btn charger action")
+def btn_sauvegarder_action():
+    print("btn sauvegarder action")
+def btn_analyser_action():
+    print("btn analyser action")
+
+
 app = QApplication([])
 fen = QWidget()
 
@@ -47,10 +58,15 @@ grid.addWidget(lbl_gagnant, 6, 1)
 
 btn_charger = QPushButton("Charger")
 grid.addWidget(btn_charger, 7, 0)
+btn_charger.clicked.connect(btn_charger_action)
+
 btn_sauvegarde = QPushButton("Sauvegarde")
 grid.addWidget(btn_sauvegarde, 7, 1)
+btn_sauvegarde.clicked.connect(btn_sauvegarder_action)
+
 btn_analyse = QPushButton("Analyser")
 grid.addWidget(btn_analyse, 7, 2)
+btn_analyse.clicked.connect(btn_analyser_action)
 
 
 fen.show()
