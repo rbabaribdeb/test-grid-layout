@@ -1,7 +1,12 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QLineEdit
 
 
-
+def somme_moyenne(tab):
+    somme =0
+    for x in tab:
+        somme = somme + int(x.text())
+    moyenne = somme / len(tab)
+    return somme, moyenne
 
 def btn_charger_action():
     print("btn charger action")
@@ -9,6 +14,10 @@ def btn_sauvegarder_action():
     print("btn sauvegarder action")
 def btn_analyser_action():
     print("btn analyser action")
+    print(str(somme_moyenne(liste_scores)[0]))
+    lbl_moyenne.setText("Moyenne : " + str(somme_moyenne(liste_scores)[1]))
+    lbl_totalPoint.setText("Total : " + str(somme_moyenne(liste_scores)[0]))
+
 
 
 app = QApplication([])
@@ -30,23 +39,20 @@ grid.addWidget(lbl3, 3, 0)
 lbl4 = QLabel("joueur4")
 grid.addWidget(lbl4, 4, 0)
 
-input1 = QLineEdit()
-grid.addWidget(input1, 1, 1)
-input2 = QLineEdit()
-grid.addWidget(input2, 2, 1)
-input3 = QLineEdit()
-grid.addWidget(input3, 3, 1)
-input4 = QLineEdit()
-grid.addWidget(input4, 4, 1)
+######################################################
+liste_nom    = []
+liste_scores = []
 
-input12 = QLineEdit()
-grid.addWidget(input12, 1, 2)
-input22 = QLineEdit()
-grid.addWidget(input22, 2, 2)
-input32 = QLineEdit()
-grid.addWidget(input32, 3, 2)
-input42 = QLineEdit()
-grid.addWidget(input42, 4, 2)
+for i in range(4):
+    liste_nom.append(QLineEdit())
+    liste_scores.append(QLineEdit())
+
+for i in range(4):
+    grid.addWidget(liste_nom[i], i+1, 1)
+    grid.addWidget(liste_scores[i], i+1, 2)
+#######################################################
+
+
 
 lbl_totalPoint = QLabel("total_point : 0")
 grid.addWidget(lbl_totalPoint, 5, 1)
